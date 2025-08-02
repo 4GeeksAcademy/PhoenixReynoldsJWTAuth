@@ -6,6 +6,8 @@ export const Home = () => {
 
 	const { store, dispatch } = useGlobalReducer()
 
+	
+
 	const loadMessage = async () => {
 		try {
 			const backendUrl = import.meta.env.VITE_BACKEND_URL

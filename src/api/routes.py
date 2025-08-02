@@ -20,3 +20,18 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/user', methods=['POST']) # needs to be unprotected to allow users that aren't logged in to post to the signup
+def signup():
+    body = request.json #request.json gives body in dictionary format
+    print(body)
+
+    user = User(email = body["email"], password = body["password"])
+    db.session.add(user)
+    db.session.commit()
+
+    record_exists = User.query.filter_by(email = body["email"])
+    if record_exists:
+        return "recieved", 200
+    else:
+        return "Error, user could not be created", 500
