@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 
 export const Signup = () => {
     const [emailInputValue, setEmailInputValue] = useState("");
     const [passwordInputValue, setPasswordInputValue] = useState("");
-    const navigate = useNavigate()
-
-    {/* write a function here to POST fetch un and pw to backend */ }
+    const navigate = useNavigate
+    
     const createUser = (e) => {
-        e.preventDefault(); {/* preventDefault prevents refreshing of page */}
+        e.preventDefault()
         let data = { email: emailInputValue, password: passwordInputValue }
         fetch('https://refactored-space-bassoon-g46vq9jvgj5xhw7rw-3001.app.github.dev/api/user', {
             method: 'POST',
@@ -23,7 +22,7 @@ export const Signup = () => {
             })
             .then(response => {
                 console.log('Success:', response)
-                navigate("/")
+                navigate("/");
             })
             .catch(error => console.error(error))
     }
@@ -38,6 +37,7 @@ export const Signup = () => {
                             <div className="border border-1 border-secondary rounded p-3 d-flex justify-content-center align-items-center" style={{ height: "70vh", boxSizing: "border-box" }}>
                                 <div>
                                     <h1 className="mx-auto">Sign Up!</h1>
+                                    <form onSubmit={createUser}>
                                     <input
                                         className="form-control border-1 border-secondary focus-ring-0 m-1"
                                         value={emailInputValue}
@@ -53,9 +53,10 @@ export const Signup = () => {
                                     <Link to="/" className="btn btn-secondary ms-2 text-decoration-none">
                                         Cancel
                                     </Link>
-                                    <button className="btn btn-success ms-2 text-decoration-none" onClick={(e) => createUser(e)}>
+                                    <button type="submit" className="btn btn-success ms-2 text-decoration-none">
                                         Sign up!
                                     </button>
+                                    </form>
                                     {/* put link to send signup token here, and onclick (onsubmit?) */}
                                 </div>
                             </div>
