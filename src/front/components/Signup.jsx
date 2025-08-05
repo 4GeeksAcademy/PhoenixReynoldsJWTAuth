@@ -9,7 +9,7 @@ export const Signup = () => {
     const createUser = (e) => {
         e.preventDefault()
         let data = { email: emailInputValue, password: passwordInputValue }
-        fetch('https://refactored-space-bassoon-g46vq9jvgj5xhw7rw-3001.app.github.dev/api/user', {
+        fetch('https://shiny-trout-g46vq9jvg9j5c9w9-3001.app.github.dev/api/user', {
             method: 'POST',
             body: JSON.stringify(data), // data can be a 'string' or an {object} which comes from somewhere further above in our application
             headers: {
